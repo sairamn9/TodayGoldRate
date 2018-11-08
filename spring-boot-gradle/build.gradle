@@ -1,0 +1,45 @@
+buildscript {
+	ext {
+        springBootVersion = '1.4.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+/* bootJar {
+    baseName = 'gs-spring-boot'
+    version =  '0.1.0'
+} */
+
+
+ jar {
+	baseName = 'boot-gradle'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web','org.apache.tomcat.embed:tomcat-embed-jasper'
+	,'javax.servlet:jstl')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	compile 'org.springframework.security:spring-security-web:4.1.2.RELEASE'
+ compile 'org.springframework.security:spring-security-config:4.1.2.RELEASE'
+}
